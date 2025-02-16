@@ -1,0 +1,274 @@
+* {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Poppins", serif;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  height: 100dvh;
+  background-size: 600%;
+  background-image: linear-gradient(56deg, rgba(44,58,62,1) 0%, rgba(37,42,60,1) 50%, rgba(5,8,13,1) 100%);
+  background-position: top left;
+  animation: bgAnimate 8s linear infinite alternate-reverse both;
+}
+
+@keyframes bgAnimate {
+   to {
+      background-position: bottom right;
+    }
+  }
+
+
+.main h1 {
+  font-size: 4rem;
+  color: #fff;
+}
+
+.main .date {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: #fff;
+}
+
+.main {
+  min-width: 40%;
+  border-radius: 3.5rem 0 0 3.5rem;
+  padding: 2rem 1rem 2rem 4rem;
+}
+
+.main .location {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.main .time {
+  font-size: 5rem;
+  font-weight: 500;
+}
+
+.main .wrapper-temp {
+  position: absolute;
+  left: 4rem;
+  bottom: 3rem;
+  display: grid;
+  place-items: start;
+}
+
+.main .wrapper-temp .image-cuaca {
+  width: 15rem;
+  margin-left: -2rem;
+}
+
+.main .wrapper-temp .suhu {
+  font-family: "Poppins" sans-serif;
+  font-size: 7rem;
+  color: #fff;
+}
+
+.main .wrapper-temp .cuaca {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.details {
+  min-width: 60%;
+  padding: 7rem 4rem 2rem 4rem;
+  background-color: rgba(182, 182, 182, 0.349);
+  backdrop-filter: blur(0.5rem);
+  -webkit-backdrop-filter: blur(0.5rem);
+  border-radius: 3.5rem 0 0 3.5rem;
+}
+
+.details .content {
+  display: grid;
+  width: 80%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  font-size: 2.5rem;
+  font-style: oblique;
+  font-weight: 200;
+  color: #fff;
+}
+
+.details .content div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details .prediction {
+  width: 80%;
+  background-color: rgba(113, 107, 116, 0.062);
+  margin-top: 7rem;
+  display: flex;
+  border-radius: 2rem;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+  color: #fff;
+  overflow-x: scroll;
+  scrollbar-width: none;
+}
+
+.details .prediction .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(143, 143, 143, 0.37);
+  min-width: 15rem;
+  min-height: 21rem;
+  border-radius: 2rem;
+}
+
+.details .prediction .card > h1 {
+  margin-top: 1rem;
+}
+
+.copyright {
+  color: #ffffffbd;
+  font-size: 1.2rem;
+  margin-top: 4rem;
+}
+
+@media screen and (max-width:1440px) {
+  html {
+    font-size: 85%;
+  }
+
+  .details .prediction .card {
+    min-width: 14rem;
+    min-height: 20rem;
+  }
+}
+
+@media screen and (max-width:1366px) {
+  html {
+    font-size: 68%;
+  }
+
+  .details .prediction .card {
+    min-width: 13rem;
+    min-height: 19rem;
+  }
+}
+
+@media screen and (max-width:992px) {
+  html {
+    font-size: 60%;
+  }
+
+  .details .content {
+    display: grid;
+    width: 80%;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    font-size: 2.5rem;
+    font-style: oblique;
+    font-weight: 200;
+    color: #fff;
+  }
+
+  .details .prediction {
+    width: 80%;
+    background-color: rgba(113, 107, 116, 0.062);
+    margin-top: 4rem;
+    display: flex;
+    border-radius: 2rem;
+    gap: 1.5rem;
+    font-size: 1.5rem;
+    color: #fff;
+    overflow-x: scroll;
+    scrollbar-width: none;
+  }
+}
+
+@media screen and (max-width:768px) {
+  html {
+    font-size: 55%;
+    /* border: 2px solid red; */
+  }
+
+  .container {
+    display: flex;
+    min-height: fit-content;
+    flex-direction: column;
+    background-size: 600%;
+    overflow: auto;
+    background-image: linear-gradient(56deg, rgba(44,58,62,1) 0%, rgba(37,42,60,1) 50%, rgb(42, 54, 75) 100%);
+    background-position: top left;
+    animation: bgAnimate 8s linear infinite alternate-reverse both;
+  }
+
+  .main {
+    min-width: 40%;
+    min-height: 40%;
+    padding: 2rem 1rem 2rem 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .main .wrapper-temp {
+    position: relative;
+    top: 0;
+    bottom: auto;
+    left: auto;
+    display: grid;
+    place-items: center;
+  }
+
+  .details {
+    min-width: 60%;
+    padding: 7rem 4rem 2rem 4rem;
+    background-color: rgba(182, 182, 182, 0.349);
+    backdrop-filter: blur(0.5rem);
+    -webkit-backdrop-filter: blur(0.5rem);
+    border-radius: 3.5rem 3.5rem 0 0;
+  }
+
+  .details .content {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    font-size: 2.5rem;
+    font-style: oblique;
+    font-weight: 200;
+    color: #fff;
+  }
+
+  .details .prediction {
+    width: 100%;
+    background-color: rgba(113, 107, 116, 0.062);
+    margin-top: 4rem;
+  }
+
+}
+
+@media screen and (max-width:468px) {
+  html {
+    font-size: 40%;
+  }
+
+  .details .prediction .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(143, 143, 143, 0.37);
+    min-width: 12rem;
+    min-height: 18rem;
+    border-radius: 2rem;
+  }
+
+  .details .prediction .card img {
+    width: 8rem;
+  }
+}
+
