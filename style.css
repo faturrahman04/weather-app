@@ -4,6 +4,10 @@
   overflow-x: hidden;
 }
 
+img {
+  image-rendering: crisp-edges;
+}
+
 body {
   font-family: "Poppins", serif;
   box-sizing: border-box;
@@ -12,15 +16,16 @@ body {
 .container {
   display: flex;
   height: 100dvh;
-  background-size: 600%;
-  background-image: linear-gradient(56deg, rgba(44,58,62,1) 0%, rgba(37,42,60,1) 50%, rgba(5,8,13,1) 100%);
   background-position: top left;
-  animation: bgAnimate 8s linear infinite alternate-reverse both;
+  animation: bgAnimate 4s linear infinite alternate-reverse both;
 }
 
 @keyframes bgAnimate {
+  from {
+    background-color: rgb(37, 39, 49);
+  }
    to {
-      background-position: bottom right;
+    background-color: rgb(50, 30, 59);
     }
   }
 
@@ -209,7 +214,7 @@ body {
   .main {
     min-width: 40%;
     min-height: 70%;
-    padding: 10rem 1rem 2rem 4rem;
+    padding: 10rem 1rem 5rem 4rem;
     display: flex;
     align-items: center;
     flex-direction: column;

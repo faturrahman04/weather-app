@@ -33,10 +33,13 @@ fetch('https://api.weatherapi.com/v1/current.json?key=ea34db3bb49345e5b111745392
       cloud : response.current.cloud
     }
 
+    const changeResolution = responseData.icon;
+    const highRes = changeResolution.replace("64x64", "128x128");
+
     const ketLokasi = document.querySelector('.location');
     ketLokasi.innerHTML = ` <img width="15" src="./img/location.svg" alt=""> ${responseData.location}, ${responseData.provinsi}`;
     const imageCuaca = document.querySelector('.image-cuaca');
-    imageCuaca.src = `${responseData.icon}`
+    imageCuaca.src = `${highRes}`
     const ketSuhu = document.querySelector('.suhu');
     ketSuhu.textContent += `${responseData.suhu}℃`;
     const ketCuaca = document.querySelector('.cuaca');
@@ -66,6 +69,8 @@ fetch('https://api.weatherapi.com/v1/forecast.json?key=ea34db3bb49345e5b11174539
       let formatWaktu = `${weekday[new Date(waktu).getDay()]}`;
 
       let iconPredict = e.day.condition.icon;
+
+      const highRes = iconPredict.replace("64x64", "128x128");
       let tempPredict = e.day.avgtemp_c;
       let weatherPredict = e.day.condition.text;
 
@@ -73,7 +78,7 @@ fetch('https://api.weatherapi.com/v1/forecast.json?key=ea34db3bb49345e5b11174539
       
       prediction.innerHTML += `<div class="card">
                 <h4>${formatWaktu}</h6>
-                  <img width="150" src="${iconPredict}" alt="">
+                  <img width="150" src="${highRes}" alt="">
                   <h4 style="font-weight: 300;">${weatherPredict}</h4>
                   <h4 style="font-weight: 300;">${tempPredict}℃</h4>
                 </div>`
