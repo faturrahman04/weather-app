@@ -205,15 +205,6 @@ body {
     animation: bgAnimate 8s linear infinite alternate-reverse both;
   }
 
-  .main {
-    min-width: 40%;
-    min-height: 40%;
-    padding: 2rem 1rem 2rem 4rem;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-
   .main .wrapper-temp {
     position: relative;
     top: 0;
@@ -265,6 +256,48 @@ body {
     min-width: 12rem;
     min-height: 18rem;
     border-radius: 2rem;
+  }
+
+  .main {
+    min-width: 40%;
+    min-height: 70%;
+    padding: 10rem 1rem 2rem 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .main .day {
+    font-size: 7rem;
+    font-weight: 400;
+  }
+
+  .main .date {
+    font-size: 2.5rem;
+    font-weight: 400;
+  }
+
+  .main .time {
+    font-size: 8rem;
+  }
+
+  .main .wrapper-temp {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+
+  .main .wrapper-temp .suhu {
+    font-size: 13rem;
+  }
+
+  .main .wrapper-temp .image-cuaca {
+    width: 27rem;
+  }
+
+  .main .wrapper-temp .cuaca {
+    font-size: 3rem;
   }
 
   .details .prediction .card img {
