@@ -15,27 +15,29 @@ setInterval(() => {
   time.textContent = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
 }, 1000);
 
-fetch('https://api.openweathermap.org/data/2.5/weather?appid=8a13c4c2b37255f02fa20d826791ffd9&units=metric&lang=id&q=Bukittinggi')
+fetch('http://api.weatherapi.com/v1/current.json?key=ea34db3bb49345e5b11174539251402&q=-0.322941,100.393698&lang=id')
   .then(response => response.json())
   .then(response => {
+    // console.log(response.current)
 
     let responseData = {
-      cuaca : response.weather[0].main,
-      icon  : response.weather[0].icon,
-      suhu  : Math.floor(response.main.temp),
-      location  : response.name,
-      humidity  : response.main.humidity,
-      visibility: response.visibility,
-      sunrise   : response.sys.sunrise,
-      sunset    : response.sys.sunset,
-      wind  : response.wind.speed,
-      cloud : response.clouds.all
+      cuaca : response.current.condition.text,
+      icon  : response.current.condition.icon,
+      suhu  : Math.ceil(response.current.temp_c),
+      location  : response.location.name,
+      provinsi  : response.location.region,
+      humidity  : response.current.humidity,
+      visibility: response.current.vis_km,
+      uv   : response.current.uv,
+      pressure  : response.current.pressure_mb,
+      wind  : response.current.wind_kph,
+      cloud : response.current.cloud
     }
 
     const ketLokasi = document.querySelector('.location');
-    ketLokasi.innerHTML = ` <img width="15" src="./img/location.svg" alt=""> ${responseData.location}`;
+    ketLokasi.innerHTML = ` <img width="15" src="./img/location.svg" alt=""> ${responseData.location}, ${responseData.provinsi}`;
     const imageCuaca = document.querySelector('.image-cuaca');
-    imageCuaca.src = `https://openweathermap.org/img/wn/${responseData.icon}@2x.png`
+    imageCuaca.src = `${responseData.icon}`
     const ketSuhu = document.querySelector('.suhu');
     ketSuhu.textContent += `${responseData.suhu}℃`;
     const ketCuaca = document.querySelector('.cuaca');
@@ -43,34 +45,47 @@ fetch('https://api.openweathermap.org/data/2.5/weather?appid=8a13c4c2b37255f02fa
 
     document.querySelector('.humidity').textContent = `${responseData.humidity}%`;
 
-    document.querySelector('.visibility').textContent = `${responseData.visibility/1000} km`;
+    document.querySelector('.visibility').textContent = `${responseData.visibility} km`;
 
-    document.querySelector('.sunrise').textContent =`${new Date(responseData.sunrise * 1000).getHours()}.${new Date(responseData.sunrise * 1000).getMinutes()} AM`;
+    document.querySelector('.uv').textContent = responseData.uv
 
-    document.querySelector('.sunset').textContent =`${new Date(responseData.sunset * 1000).getHours()}.${new Date(responseData.sunset * 1000).getMinutes()} PM`;
+    document.querySelector('.pressure').textContent = `${responseData.pressure} mb`
 
-    document.querySelector('.wind').textContent = `${responseData.wind} m/s`;
+    document.querySelector('.wind').textContent = `${responseData.wind} km/h`;
 
     document.querySelector('.cloud').textContent = `${responseData.cloud}%`;
 });
 
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=Bukittinggi&appid=8a13c4c2b37255f02fa20d826791ffd9&units=metric')
+fetch('https://api.weatherapi.com/v1/forecast.json?key=ea34db3bb49345e5b11174539251402&q=-0.322941,100.393698&days=10')
   .then(response => response.json())
   .then(response => {
-    let list = response.list;
+    let data = response.forecast.forecastday;
+
+
+
+    // forecast.date_epoch
+    // forecast.day.avgtemp_c
+    // forecast.day.condition.icon
+    // forecast.day.condition.text
+
+
+  //   let list = response.forecast;
     let prediction = document.querySelector('.container .details .prediction');
-    list.forEach(e => {
-      let waktu = e.dt;
-      let formatWaktu = `${new Date(waktu * 1000).getHours()}:${new Date(waktu * 1000).getMinutes()}0`;
+    data.forEach(e => {
+      let waktu = e.date;
+      let formatWaktu = `${weekday[new Date(waktu).getDay()]}`;
 
-      let iconPredict = e.weather[0].icon;
+      let iconPredict = e.day.condition.icon;
+      let tempPredict = e.day.avgtemp_c;
+      let weatherPredict = e.day.condition.text;
 
-      let tempPredict = Math.floor(e.main.temp);
+      // let tempPredict = Math.floor(e.main.temp);
       
       prediction.innerHTML += `<div class="card">
                 <h4>${formatWaktu}</h6>
-                  <img width="150" src="https://openweathermap.org/img/wn/${iconPredict}@2x.png" alt="">
-                  <h4>${tempPredict}℃</h4>
+                  <img width="150" src="${iconPredict}" alt="">
+                  <h4 style="font-weight: 300;">${weatherPredict}</h4>
+                  <h4 style="font-weight: 300;">${tempPredict}℃</h4>
                 </div>`
   });
 });
