@@ -15,7 +15,7 @@ setInterval(() => {
   time.textContent = `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`;
 }, 1000);
 
-fetch('http://api.weatherapi.com/v1/current.json?key=ea34db3bb49345e5b11174539251402&q=-0.322941,100.393698&lang=id')
+fetch('https://api.weatherapi.com/v1/current.json?key=ea34db3bb49345e5b11174539251402&q=-0.322941,100.393698&lang=id')
   .then(response => response.json())
   .then(response => {
 
