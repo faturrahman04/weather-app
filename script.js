@@ -18,7 +18,6 @@ setInterval(() => {
 fetch('http://api.weatherapi.com/v1/current.json?key=ea34db3bb49345e5b11174539251402&q=-0.322941,100.393698&lang=id')
   .then(response => response.json())
   .then(response => {
-    // console.log(response.current)
 
     let responseData = {
       cuaca : response.current.condition.text,
@@ -61,15 +60,6 @@ fetch('https://api.weatherapi.com/v1/forecast.json?key=ea34db3bb49345e5b11174539
   .then(response => {
     let data = response.forecast.forecastday;
 
-
-
-    // forecast.date_epoch
-    // forecast.day.avgtemp_c
-    // forecast.day.condition.icon
-    // forecast.day.condition.text
-
-
-  //   let list = response.forecast;
     let prediction = document.querySelector('.container .details .prediction');
     data.forEach(e => {
       let waktu = e.date;
