@@ -197,16 +197,13 @@ body {
 @media screen and (max-width:768px) {
   html {
     font-size: 55%;
-    /* border: 2px solid red; */
   }
 
   .container {
     display: flex;
     min-height: fit-content;
     flex-direction: column;
-    background-size: 600%;
     overflow: auto;
-    background-image: linear-gradient(56deg, rgba(44,58,62,1) 0%, rgba(37,42,60,1) 50%, rgb(42, 54, 75) 100%);
     background-position: top left;
     animation: bgAnimate 8s linear infinite alternate-reverse both;
   }
@@ -268,7 +265,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(143, 143, 143, 0.37);
     min-width: 17rem;
     min-height: 23rem;
     border-radius: 2rem;
@@ -282,6 +278,10 @@ body {
     align-items: center;
     flex-direction: column;
     gap: 1rem;
+  }
+
+  .main .location {
+    font-size: 2.4rem;
   }
 
   .main .day {
@@ -302,6 +302,7 @@ body {
     position: relative;
     display: grid;
     place-items: center;
+    margin-bottom: 2rem;
   }
 
   .main .wrapper-temp .suhu {
@@ -314,6 +315,8 @@ body {
 
   .main .wrapper-temp .cuaca {
     font-size: 3rem;
+    font-weight: 400;
+    margin-top: -2.5rem;
   }
 
   .details .prediction .card img {
